@@ -1,4 +1,4 @@
-﻿﻿# Sky_Flights_app - flights-reservatio
+﻿﻿# Sky_Flights_app -- flights-reservation
  
  ## Table of contents
 * [General info](#general-info)
