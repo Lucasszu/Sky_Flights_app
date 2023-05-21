@@ -1,0 +1,37 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Rubik", sans-serif;
+	line-height: 1;
+	font-weight: 400;
+	width: 100vw;
+}
+
+.container-main {
+	background-image: url("../assets/img/hero.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow-x: hidden;
+	height: 100vh;
+}
+
+table {
+	height: 78vh;
+    overflow-y: scroll;
+    display: inline-block;
+}
+
+.grid {
+	display: grid;
+	column-gap: 6.4rem;
+	row-gap: 9.6rem;
+}

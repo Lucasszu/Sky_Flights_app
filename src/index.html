@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Flights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/general.scss">
+    <link rel="stylesheet" href="./css/style.scss">
+    <link rel="stylesheet" href="./css/queries.scss">
+
+</head>
+
+<body>
+    <div class="container-main">
+        <header class="header">
+            <a href="#" class="logo">
+                SKY FLIGHTS
+            </a>
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a class="main-nav-link" href="#home">Home</a></li>
+                    <li><a class="main-nav-link" href="#">Trips</a></li>
+                    <li><a class="main-nav-link" href="#">Settings</a></li>
+                    <li><a id="user-link" class="nav-link" href="">Username</a></li>
+                    <li><a id="sign-out-link" class="nav-link" href="">Sign Out</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn-mobile--nav">
+                <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+                <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+            </button>
+        </header>
+        <main>
+            <section class="section-hero">
+                <div class="hero">
+                    <div class="hero-text-box">
+                        <h1 class="heading-primary">One last step before your next yourney</h1>
+                    </div>
+
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Trip path
+                                </h2>
+                                <div class="card-location">
+                                    <div class="starting-location">
+                                        <label id="origin-label" for="origin-input" class="form-labels">Origin</label>
+                                        <div class="card-input">
+                                            <input type="text" class="form-control" list="origin-options"
+                                                id="origin-input" placeholder="Location">
+                                            <datalist id="origin-options"></datalist>
+                                        </div>
+                                    </div>
+
+                                    <div class="finish-location">
+                                        <label id="destination-label" for="destination-input"
+                                            class="form-labels">Destination</label>
+                                        <div class="card-input">
+                                            <input type="text" class="form-control" list="destination-options"
+                                                id="destination-input" placeholder="Location">
+                                            <datalist id="destination-options"></datalist>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title">Dates</h2>
+                                <div class="card-dates">
+                                    <div class="flight-type">
+                                        <label id="flight-type" for="flight-type-option"
+                                            class="form-labels">Flight</label>
+                                        <select id="flight-type-select" class="form-select">
+                                            <option value="one-way">One-way</option>
+                                            <option value="two-way">Two-way-trip</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="dates-container">
+                                        <div id="departure-date" class="departure-date">
+                                            <label id="departure-date-label" for="departure-date-input"
+                                                class="form-labels">Departure
+                                                date</label>
+                                            <div class="card-input">
+                                                <input type="date" class="form-control" id="departure-date-input" />
+                                            </div>
+                                        </div>
+
+                                        <div id="return-date" class="return-date deactive_return ">
+                                            <label id="return-date-label" for="return-date-input"
+                                                class="form-labels">Return
+                                                date</label>
+                                            <div class="card-input">
+                                                <input type="date" class="form-control" id="return-date-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title">Who will be travelling?</h2>
+                                <div class="card-travel-details">
+                                    <label id="travel-class-label" for="travel-class-select" class="form-labels">Travel
+                                        class</label>
+                                    <select id="travel-class-select" class="form-select"
+                                        aria-describedby="travel-class-label">
+                                        <option value="ECONOMY">Economy</option>
+                                        <option value="PREMIUM_ECONOMY">Premium Economy</option>
+                                        <option value="BUSINESS">Business</option>
+                                        <option value="FIRST">First</option>
+                                    </select>
+                                </div>
+
+                                <div class="passanger-inputs">
+                                    <label class="form-labels__passangers">Passangers</label>
+                                    <div>
+                                        <div class="card-input">
+                                            <label for="adults-input" class="input-text-group">Adults</label>
+                                            <input type="number" min="0" class="form-control" id="adults-input" />
+                                        </div>
+                                        <span id="adults-bottom-label" class="form-text">12 years old and older</span>
+                                    </div>
+                                    <div>
+                                        <div class="card-input">
+                                            <label class="children-input" class="input-text-group">Children</label>
+                                            <input type="number" min="0" class="form-control" id="children-input" />
+                                        </div>
+                                        <span id="children-bottom-label" class="form-text">2 to 12 years old</span>
+                                    </div>
+                                    <div>
+                                        <div class="card-input">
+                                            <label class="infants-input" class="input-text-group">Infants</label>
+                                            <input type="number" min="0" class="form-control" id="infants-input" />
+                                        </div>
+                                        <span id="infants-bottom-label" class="form-text">Up to 2 years old</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title">Luggage option?</h2>
+                                <div class="card-travel-details">
+                                    <label id="luggage-class-label" for="luggage-class-select"
+                                        class="form-labels">Luggage</label>
+                                    <select id="luggage-class-select" class="form-select">
+                                        <option value="Carry on">Carry-on</option>
+                                        <option value="Carry on & trolley">Carry on & trolley</option>
+                                    </select>
+                                    <h2 class="card-title-currency">What currency do you prefer</h2>
+                                    <div class="card-travel-details">
+                                        <label id="currency-class-label" for="currency-class-select"
+                                            class="form-labels"></label>
+                                        <select id="currency-class-select" class="form-select">
+                                            <option value="PLN">PLN</option>
+                                            <option value="USD">USD</option>
+                                            <option value="EUR">EUR</option>
+                                            <option value="CHF">CHF</option>
+                                        </select>
+                                    </div>
+                                    <button id="search-btn" class="search-button">Search</button>
+                                    <button id="cancel-btn" class="cancel-btn">Cancel</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </section>
+            <select id="currencyAdd" class="hidden-currency">
+                <option value="PLN">PLN</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+        </main>
+        <div class="table-info-open" id="table-info">
+            <table>
+                <thead>
+                    <tr>
+                        <th id="departure-data">DEPARTURE</th>
+                        <th id="arrival-data">ARRIVAL</th>
+                        <th id="time">DURATION</th>
+                        <th id="airline">AIRLINE</th>
+                        <th id="currency">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const userLink = document.getElementById("user-link");
+        const signOutLink = document.getElementById("sign-out-link");
+        let currentUser = null;
+
+        function getuserName() {
+            keepLogged = localStorage.getItem("keepLogged");
+            if (keepLogged = "logged") {
+                currentUser = JSON.parse(localStorage.getItem('user'))
+            } else {
+                currentUser = JSON.parse(sessionStorage.getItem('user'))
+            }
+        }
+
+        function SignOut() {
+            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
+            localStorage.removeItem('keepLogged');
+            window.location = "index.html";
+        }
+
+        window.onload = function () {
+            getuserName();
+            if (currentUser == null) {
+                userLink.innerText = "Create new account";
+                userLink.classList.replace("nav-link", "login")
+                userLink.href = "register.html";
+
+                signOutLink.innerText = "Login";
+                signOutLink.classList.replace("nav-link", "login")
+                signOutLink.classList.add("basic-button")
+                signOutLink.href = "login.html";
+            } else {
+
+                userLink.innerText = currentUser.username;
+                userLink.classList.replace("login", "nav-link")
+                userLink.href = "#";
+
+                signOutLink.innerText = "Sign out";
+                signOutLink.classList.replace("login", "nav-link")
+                signOutLink.href = "javascript:SignOut();";
+            }
+        }
+
+    </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-image: url("../assets/img/hero.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .sign-up-form {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 420px;
+            margin: 50px auto;
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            /* background: #f5f4f5; */
+            z-index: 2;
+            opacity: 1;
+            box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+            width: 330px;
+        }
+
+        input {
+            height: 30px;
+            margin-bottom: 25px;
+        }
+
+        form input {
+            width: 92%;
+
+            outline: none;
+            border: 1px solid #fff;
+            padding: 12px 20px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            background: #e4e4e4;
+        }
+
+        #sub_btn {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-top: 4rem;
+            padding: 10px 0;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+            width: 90%;
+            color: #fff;
+            cursor: pointer;
+            background: rgb(17, 107, 143);
+        }
+
+        #sub_btn:hover {
+            background: rgba(17, 107, 143, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sign-up-form">
+        <h3>Sign up</h3>
+        <input type="text" placeholder="Fullname" id="nameInput" class="form-design" />
+        <input type="text" placeholder="Email" id="emailInput" class="form-design" />
+        <input type="text" placeholder="Username" id="userInput" class="form-design" />
+        <input type="password" placeholder="Password" id="passwordInput" class="form-design" />
+        <button type="text" id="sub_btn" class="form-design-button">Sign up</button>
+        <a href="login.html" class="btn_logIn">Already Have An Account?</a>
+    </div>
+    <ion-icon class="icon-mobile-nav default" name="close-outline" href="index.html"></ion-icon>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBhuC6otLzQPe5-GaXhoCQSJfslEf_HQ8",
+            authDomain: "flight-app-98824.firebaseapp.com",
+            databaseURL: "https://flight-app-98824-default-rtdb.firebaseio.com",
+            projectId: "flight-app-98824",
+            storageBucket: "flight-app-98824.appspot.com",
+            messagingSenderId: "488733466748",
+            appId: "1:488733466748:web:dc60a1f54543d12953e9f9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+        const db = getDatabase();
+
+        // ---------------------------REFERENCES----------------
+        const name = document.getElementById("nameInput");
+        const email = document.getElementById("emailInput");
+        const username = document.getElementById("userInput");
+        const pass = document.getElementById("passwordInput");
+        const submit = document.getElementById("sub_btn");
+
+        // Regex pattern
+        const validatePass = (password) => {
+            if (password < 6) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        const validateField = (field) => {
+            if (field === null) {
+                return false;
+            }
+            if (field.length <= 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+
+        function Validation() {
+
+            const regex = /^[a-zA-Z\s]+$/;
+            const mailRegex = /^[a-zA-Z0-9]+@(gmail|yahoo|outlook)\.com$/;
+            const userCheck = /^[a-zA-Z0-9]{5,}$/;
+
+
+
+            // if ((validateField(name.value)) || validateField(email.value) || validateField(username.value) || validateField(pass.value)) {
+            //     alert("you cannot left field empty");
+            //     return false;
+            // }
+
+            if (!regex.test(name.value)) {
+                alert("The name must contain only letters")
+                return false;
+            }
+            if (!mailRegex.test(email.value)) {
+                alert("Please enter a valid email address")
+                return false;
+            }
+            if (!userCheck.test(username.value)) {
+                alert("Wrong username, can only be alphanumeric, at least 5 characters,cannot contain special symbols")
+                return false;
+            }
+
+            if ((pass.value) == "") {
+                alert("Please enter a valid password")
+                return false;
+            }
+
+            return true;
+        }
+
+        // -------------------------FIREBASE REGISTER ------------------------
+
+        function RegisterUser() {
+            if (!Validation()) {
+                return;
+            };
+            const databaseRef = ref(db);
+            get(child(databaseRef, "UsersList/" + username.value)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    alert("Account already exist!");
+                } else {
+                    set(ref(db, "UsersList/" + username.value), {
+                        name: name.value,
+                        email: email.value,
+                        username: username.value,
+                        password: pass.value
+                    }).then(() => {
+                        alert("User added successfully");
+                    }).catch((error) => {
+                        alert("error", error)
+                    });
+                }
+            })
+        };
+
+        // --SUBMIT USER --
+
+        submit.addEventListener("click", RegisterUser)
+    </script>
+</body>
+
+</html>
