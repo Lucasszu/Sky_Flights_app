@@ -5,6 +5,9 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 
+## Demo project
+https://skyflights-lucasszu.netlify.app/
+
 ## General info
 Simple app for checking current prices of flights.
 	
@@ -17,3 +20,5 @@ $ cd ../
 $ npm install --save-dev
 $ npm run build
 $ npm run start:dev
+
+
